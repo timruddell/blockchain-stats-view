@@ -1,14 +1,14 @@
-var React = require("react");
+const React = require("react");
+const StatisticSourceSelector = require('../containers/container.statistic-selector');
 
-//
-// Root application view.
-//
-const View = ({
-    message
-}) => {
+/**
+ * Root application view.
+ * 
+ */
+const View = () => {
     return (
         <div>
-            <p>{message}</p>
+            <StatisticSourceSelector />
         </div>
     );
 }
