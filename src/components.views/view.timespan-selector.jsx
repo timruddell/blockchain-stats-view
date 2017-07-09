@@ -5,14 +5,14 @@ const React = require('react');
  * 
  */
 const View = ({
-    timespanValue,
+    selectedTimespan,
     timespans,
 
     onTimespanChanged
 }) => {
     return (
         <select 
-            value={timespanValue}
+            value={selectedTimespan}
             onChange={(e) => onTimespanChanged(e.target.value)}>
             {
                 timespans.map((source) => 

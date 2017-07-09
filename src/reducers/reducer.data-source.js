@@ -14,15 +14,15 @@ const initialState = {
         },
         {
             label: "Transactions per day",
-            value: "transactions-per-day"
+            value: "n-transactions"
         },
         {
             label: "Total transaction fees (USD)",
-            value: "total-transaction-fees"
+            value: "transaction-fees-usd"
         },
         {
             label: "Unique addresses",
-            value: "unique-addresses"
+            value: "n-unique-addresses"
         }
     ],
 
@@ -60,7 +60,10 @@ const initialState = {
         },
     ],
 
-    timespanValue: "1days"
+    selectedTimespan: "1days",
+
+    data: [],
+    dataLoaded: false
 }
 
 // Slice reducer.
@@ -72,7 +75,15 @@ const reducer = (state = initialState, action) => {
         }
 
         case 'SET_TIMESPAN': {
-            return Object.assign({}, state, { timespanValue: action.value })
+            return Object.assign({}, state, { selectedTimespan: action.value })
+        }
+
+        case 'SET_DATA': {
+            return Object.assign({}, state, { data: action.value })
+        }
+        
+        case 'SET_DATA_LOADED': {
+            return Object.assign({}, state, { dataLoaded: action.value })
         }
 
         default: {

@@ -6,7 +6,7 @@ const View = require('../components.views/view.timespan-selector');
 const mapStateToProps = (state, ownProps) => {
     return {
         timespans: state.dataSource.timespans,
-        timespanValue: state.dataSource.timespanValue
+        selectedTimespan: state.dataSource.selectedTimespan
     }
 }
 
