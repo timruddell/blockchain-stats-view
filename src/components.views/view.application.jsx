@@ -4,6 +4,12 @@ const StatisticSourceSelector = require('../containers/container.statistic-selec
 const TimespanSourceSelector = require('../containers/container.timespan-selector');
 const Statistics = require('../containers/container.statistics');
 
+const css = {
+    inline: {
+        display: "inline"
+    }
+}
+
 /**
  * Root application view.
  * 
@@ -11,8 +17,13 @@ const Statistics = require('../containers/container.statistics');
 const View = () => {
     return (
         <div>
-            <StatisticSourceSelector />
-            <TimespanSourceSelector />
+            <div className="container" 
+                    style={{ paddingBottom: 0, textAlign: "center" }}>
+                <h2 style={css.inline}>Show statistics for&nbsp;&nbsp;</h2>
+                <StatisticSourceSelector />
+                <h2 style={css.inline}>&nbsp;&nbsp;over the&nbsp;&nbsp;</h2>
+                <TimespanSourceSelector />
+            </div>
             <br />
             <br />
             <Statistics />

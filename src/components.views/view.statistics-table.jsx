@@ -1,20 +1,15 @@
 const React = require('react');
 
-const styles = {
-    table: {
-        border: "1px solid black",
-        width: "50%"
-    }
-}
-
 const renderStatistics = (statistics) => {
     return (
-        <table style={styles.table}>
-            <tbody>
+        <table className="container">
+            <thead>
             <tr>
-                <th>Statistic</th>
-                <th>Value</th>
+                <th><h1>Statistic</h1></th>
+                <th><h1>Value</h1></th>
             </tr>
+            </thead>
+            <tbody>
             {
                 statistics.map(s => 
                     <tr key={s.label}>
@@ -49,9 +44,9 @@ const View = ({
                 ? (
                     statistics && statistics.length > 0 
                         ? renderStatistics(statistics) 
-                        : "No data available"
+                        : <h2>No data available for selected inputs</h2>
                 )
-                : "Loading data..."
+                : <h1><span className="yellow">Loading data...</span></h1>
         } </div>
     )
 }
