@@ -1,7 +1,7 @@
-const { connect } = require('react-redux');
+import { connect } from 'react-redux'
 
-const dataSourceActions = require('../actions/action.data-source');
-const View = require('../components.views/view.statistic-selector');
+import { setStatisticSource } from '../actions/action.data-source'
+import View from '../components.views/view.statistic-selector'
 
 /**
  * Functionality to list possible statistic sources and allow view to change
@@ -18,9 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onStatisticSourceChanged: (value) => dispatch(dataSourceActions.setStatisticSource(value))
+        onStatisticSourceChanged: (value) => dispatch(setStatisticSource(value))
     }
 }
 
-const container = connect(mapStateToProps, mapDispatchToProps)(View);
-module.exports = container;
+export default connect(mapStateToProps, mapDispatchToProps)(View);

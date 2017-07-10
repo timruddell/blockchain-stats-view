@@ -1,6 +1,6 @@
-const React = require('react');
+import * as React from 'react'
 
-const renderStatistics = (statistics) => {
+const renderStatistics = (statistics, numberFormatter) => {
     return (
         <table className="container">
             <thead>
@@ -18,8 +18,10 @@ const renderStatistics = (statistics) => {
                         </td>
                         <td>
                             {
-                                // Rounding to 2 dp.
-                                parseFloat(Math.round(s.value * 100) / 100).toFixed(2)
+                                // Rounding to 2 dp and formatting.
+                                numberFormatter.format(
+                                    parseFloat(Math.round(s.value * 100) / 100).toFixed(2)
+                                )
                             }
                         </td>
                     </tr>
@@ -36,14 +38,15 @@ const renderStatistics = (statistics) => {
  */
 const View = ({
     statistics,
-    dataLoaded
+    dataLoaded,
+    numberFormatter
 }) => {
     return (
         <div> {
             dataLoaded 
                 ? (
                     statistics && statistics.length > 0 
-                        ? renderStatistics(statistics) 
+                        ? renderStatistics(statistics, numberFormatter) 
                         : <h2>No data available for selected inputs</h2>
                 )
                 : <h1><span className="yellow">Loading data...</span></h1>
@@ -51,4 +54,4 @@ const View = ({
     )
 }
 
-module.exports = View;
+export default View;

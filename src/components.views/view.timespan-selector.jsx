@@ -1,4 +1,4 @@
-const React = require('react');
+import * as React from 'react'
 
 /**
  * Drop-down menu for selection of timespans for data retrieval. 
@@ -23,4 +23,4 @@ const View = ({
     )
 }
 
-module.exports = View;
+export default View;

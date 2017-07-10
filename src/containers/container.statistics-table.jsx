@@ -1,9 +1,9 @@
-const React = require('react');
-const { connect } = require('react-redux');
-const Stats = require('simple-statistics');
+import * as React from 'react'
+import { connect } from 'react-redux'
+import * as Stats from 'simple-statistics'
 
-const actions = require('../actions/action.data-source');
-const View = require('../components.views/view.statistics-table');
+import actions from '../actions/action.data-source'
+import View from '../components.views/view.statistics-table'
 
 /**
  * Presentation component for displaying statistics.
@@ -43,11 +43,13 @@ const computeStatistics = (data) => {
 const mapStateToProps = (state) => {
 
     const { dataLoaded, data } = state.dataSource;
+    const l10nEN = new Intl.NumberFormat("en-US");
     
     return {
         statistics: computeStatistics(data),
-        dataLoaded
+        dataLoaded,
+        numberFormatter: l10nEN
     }
 }
 
-module.exports = connect(mapStateToProps)(View);
+export default connect(mapStateToProps)(View);

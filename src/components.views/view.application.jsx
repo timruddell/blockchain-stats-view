@@ -1,8 +1,8 @@
-const React = require("react");
+import * as React from 'react'
 
-const StatisticSourceSelector = require('../containers/container.statistic-selector');
-const TimespanSourceSelector = require('../containers/container.timespan-selector');
-const Statistics = require('../containers/container.statistics');
+import StatisticSourceSelector from '../containers/container.statistic-selector'
+import TimespanSourceSelector from '../containers/container.timespan-selector'
+import Statistics from '../containers/container.statistics'
 
 const css = {
     inline: {
@@ -31,4 +31,4 @@ const View = () => {
     );
 }
 
-module.exports = View;
+export default View;

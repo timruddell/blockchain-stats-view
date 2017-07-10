@@ -1,10 +1,10 @@
-const React = require('react');
-const Redux = require('redux');
-const Thunk = require('redux-thunk');
-const Provider = require("react-redux").Provider;
+import * as React from 'react'
+import * as Redux from 'redux'
+import * as Thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
 
-const ApplicationView = require('../components.views/view.application');
-const rootReducer = require('../reducers/reducer.root');
+import ApplicationView from '../components.views/view.application'
+import rootReducer from '../reducers/reducer.root'
 
 // Create the top-level application store for use by child components.
 var store = Redux.createStore(rootReducer, {}, Redux.applyMiddleware(Thunk.default));
@@ -19,4 +19,4 @@ class Application extends React.Component {
     }
 }
 
-module.exports = Application;
+export default Application;

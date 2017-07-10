@@ -1,7 +1,7 @@
-const { connect } = require('react-redux');
+import { connect } from 'react-redux'
 
-const dataSourceActions = require('../actions/action.data-source');
-const View = require('../components.views/view.timespan-selector');
+import { setTimespan } from '../actions/action.data-source'
+import View from '../components.views/view.timespan-selector'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -12,9 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onTimespanChanged: (value) => dispatch(dataSourceActions.setTimespan(value))
+        onTimespanChanged: (value) => dispatch(setTimespan(value))
     }
 }
 
-const container = connect(mapStateToProps, mapDispatchToProps)(View); 
-module.exports = container;
+export default connect(mapStateToProps, mapDispatchToProps)(View); 

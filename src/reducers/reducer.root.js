@@ -1,9 +1,9 @@
-const Redux = require('redux');
-const dataSourceReducer = require("./reducer.data-source");
+import * as Redux from 'redux'
+import dataSourceReducer from './reducer.data-source'
 
 // Combine all slice reducers into a single top-level reducer function.
 var reducers = Redux.combineReducers({
     dataSource: dataSourceReducer
 });
 
-module.exports = reducers;
+export default reducers;

@@ -1,8 +1,8 @@
-const React = require('react');
-const { connect } = require('react-redux');
+import * as React from 'react'
+import { connect } from 'react-redux'
 
-const actions = require('../actions/action.data-source');
-const StatisticsTable = require('./container.statistics-table');
+import { fetchData } from '../actions/action.data-source'
+import StatisticsTable from './container.statistics-table'
 
 
 /**
@@ -46,8 +46,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: () => dispatch(actions.fetchData())
+        fetchData: () => dispatch(fetchData())
     }
 }
 
-module.exports = connect(mapStateToProps, mapDispatchToProps)(StatisticsComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(StatisticsComponent);
