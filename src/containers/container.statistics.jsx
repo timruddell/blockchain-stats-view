@@ -11,15 +11,16 @@ const StatisticsTable = require('./container.statistics-table');
  */
 class StatisticsComponent extends React.Component {
     // We want to hook into the React component's lifecycle in order to
-    // load our data when the component mounts, and when it's about to 
-    // receive a new set of props.
+    // load our data when the component mounts, and when it's about to update.
     componentDidMount() {
         this.props.fetchData();
     }
     componentWillUpdate() {
         this.props.fetchData();
     }
+
     shouldComponentUpdate(nextProps, nextState) {
+        // Don't update if the user-based input hasn't changed.
         if (this.props.selectedStatisticSource == nextProps.selectedStatisticSource
                 && this.props.selectedTimespan == nextProps.selectedTimespan) {
             return false;
@@ -35,12 +36,11 @@ class StatisticsComponent extends React.Component {
 
 const mapStateToProps = (state) => {
 
-    const { selectedStatisticSource, selectedTimespan, dataLoaded } = state.dataSource;
+    const { selectedStatisticSource, selectedTimespan } = state.dataSource;
 
     return {
         selectedStatisticSource,
-        selectedTimespan,
-        dataLoaded
+        selectedTimespan
     }
 }
 
