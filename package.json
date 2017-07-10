@@ -1,0 +1,36 @@
+{
+  "name": "blockchain-stats-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:watch": "webpack --progress --colors --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RealMrTim/blockchain-stats-view.git"
+  },
+  "author": "Tim Ruddell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RealMrTim/blockchain-stats-view/issues"
+  },
+  "homepage": "https://github.com/RealMrTim/blockchain-stats-view#readme",
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "local-web-server": "^1.2.8",
+    "webpack": "^3.1.0"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0",
+    "simple-statistics": "^4.1.0"
+  }
+}

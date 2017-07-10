@@ -1,3 +1,6 @@
+# Don't look in build directory
+/build/
+
 # Logs
 logs
 *.log
