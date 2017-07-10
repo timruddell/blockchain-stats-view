@@ -27,7 +27,7 @@ export const fetchData = () => {
         dispatch(setDataLoaded(false));
 
         // Build and make our request.
-        const url = `https://api.blockchain.info/charts/${selectedStatisticSource}?timespan=${selectedTimespan}&format=json&sampled=false`;
+        const url = `https://api.blockchain.info/charts/${selectedStatisticSource}?timespan=${selectedTimespan}&format=json&sampled=false&cors=true`;
 
         return fetch(url)
             .then(response => {
