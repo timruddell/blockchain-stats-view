@@ -11,12 +11,12 @@ export const setTimespan = (value) => ({
     value
 });
 
-export const setData = (value) => ({
+const setData = (value) => ({
     type: types.SET_DATA,
     value
 });
 
-export const setDataLoaded = (value) => ({
+const setDataLoaded = (value) => ({
     type: types.SET_DATA_LOADED,
     value
 });
