@@ -1,4 +1,5 @@
 import * as types from '../constants/actions.js'
+import Blockchain from '../apis/api.blockchain-info'
 
 export const setStatisticSource = (value) => ({
     type: types.SET_STATISTIC_SOURCE,
@@ -28,25 +29,10 @@ export const fetchData = () => {
         // Reset the data loaded flag.
         dispatch(setDataLoaded(false));
 
-        // Build and make our request.
-        const url = `https://api.blockchain.info/charts/${selectedStatisticSource}?timespan=${selectedTimespan}&format=json&sampled=false&cors=true`;
-
-        return fetch(url)
-            .then(response => {
-
-                // Sanity check the content type.
-                var content = response.headers.get("content-type");
-                if (content && content.indexOf("application/json") !== -1) {
-
-                    // Parse the response to JSON and put it on the state.
-                    response.json().then(json => {
-                        dispatch(setData(json.values));
-                        dispatch(setDataLoaded(true));
-                    });
-                } else {
-                    console.error("No JSON returned from webservice.");
-                }
-            })
-            .catch(error => { throw(error); });
+        Blockchain.getData(selectedStatisticSource, selectedTimespan,
+            data => {
+                dispatch(setData(data));
+                dispatch(setDataLoaded(true));
+            });
     }
 }
