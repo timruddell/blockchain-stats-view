@@ -1,20 +1,22 @@
+import * as types from '../constants/actions.js'
+
 export const setStatisticSource = (value) => ({
-    type: 'SET_STATISTIC_SOURCE',
+    type: types.SET_STATISTIC_SOURCE,
     value
 });
 
 export const setTimespan = (value) => ({
-    type: 'SET_TIMESPAN',
+    type: types.SET_TIMESPAN,
     value
 });
 
 export const setData = (value) => ({
-    type: 'SET_DATA',
+    type: types.SET_DATA,
     value
 });
 
 export const setDataLoaded = (value) => ({
-    type: 'SET_DATA_LOADED',
+    type: types.SET_DATA_LOADED,
     value
 });
 

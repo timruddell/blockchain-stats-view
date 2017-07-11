@@ -1,3 +1,5 @@
+import * as types from '../constants/actions.js'
+
 /**
  * Slice reducer for data source related options.
  * 
@@ -70,19 +72,19 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case 'SET_STATISTIC_SOURCE': {
+        case types.SET_STATISTIC_SOURCE: {
             return Object.assign({}, state, { selectedStatisticSource: action.value });
         }
 
-        case 'SET_TIMESPAN': {
+        case types.SET_TIMESPAN: {
             return Object.assign({}, state, { selectedTimespan: action.value })
         }
 
-        case 'SET_DATA': {
+        case types.SET_DATA: {
             return Object.assign({}, state, { data: action.value })
         }
         
-        case 'SET_DATA_LOADED': {
+        case types.SET_DATA_LOADED: {
             return Object.assign({}, state, { dataLoaded: action.value })
         }
 
