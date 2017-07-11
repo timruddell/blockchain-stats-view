@@ -5,14 +5,14 @@ import * as React from 'react'
  * 
  */
 const View = ({
-    statisticSourceValue,
+    selectedStatisticSource,
     statisticSources,
 
     onStatisticSourceChanged
 }) => {
     return (
         <select 
-            value={statisticSourceValue}
+            value={selectedStatisticSource}
             onChange={(e) => onStatisticSourceChanged(e.target.value)}>
             {
                 statisticSources.map((source) => 
