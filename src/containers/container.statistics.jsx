@@ -45,10 +45,9 @@ const View = ({
     )
 }
 
-const createFetchDataSelector = () => {
-    let statistic = null;
-    let timespan = null;
-
+// Should be using a library like 'reselect', but this will suffice for
+// the trivial example.
+const createFetchDataSelector = (statistic = null, timespan = null) => {
     return (s, t) => {
         if (s !== statistic || t !== timespan) {
             statistic = s
@@ -61,15 +60,19 @@ const createFetchDataSelector = () => {
     }
 }
 
-let fetchDataSelector = createFetchDataSelector();
-
 class Statistics extends React.Component {
 
-    componentWillUpdate() {
-        this.props.dispatchFetchData(
-            this.props.selectedStatisticSource, 
-            this.props.selectedTimespan
-        );
+    componentDidUpdate() {
+        const { selectedStatisticSource, selectedTimespan } = this.props;
+
+        if (!this.fetchDataSelector) {
+            this.fetchDataSelector = createFetchDataSelector(
+                selectedStatisticSource, selectedTimespan
+            );
+        }
+
+        // Fetch data with values from the updated state.
+        this.props.dispatch(this.fetchDataSelector(selectedStatisticSource, selectedTimespan));
     }
 
     render () {
@@ -121,9 +124,6 @@ const mapStateToProps = (state) => {
         
     } = state.dataSource;
 
-    // Fetch using our selector.
-    fetchDataSelector(selectedStatisticSource, selectedTimespan);
-
     return {
         statisticSources,
         selectedStatisticSource,
@@ -141,7 +141,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onStatisticSourceChanged: (value) => dispatch(setStatisticSource(value)),
         onTimespanChanged: (value) => dispatch(setTimespan(value)),
-        dispatchFetchData: (s, t) => dispatch(fetchDataSelector(s, t))
+
+        // TODO: what's the best way to access dispatch in the Component lifecycle?
+        dispatch
     }
 }
 
